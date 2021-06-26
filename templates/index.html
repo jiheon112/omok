@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>오목</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<!-- ○ ● -->
+<body>
+    <style>
+        .space{
+            display: inline;
+            margin: 10px;
+        }
+
+    </style>
+    <script>
+        var turn = 0;
+        function White(button) {
+            var space = document.getElementById(button);
+            if(space.innerHTML == "#"){
+                space.innerHTML = "○";
+                return 0;
+            }
+            return 1;
+        }
+        function Black(button) {
+            var space = document.getElementById(button);
+            if(space.innerHTML == "#"){
+                space.innerHTML = "●";
+                return 1;
+            }
+            return 0;
+        }
+        function changeMessage(turn){
+            if(turn==1){
+                document.getElementById("message").innerHTML = "White's turn!";
+            } else {
+                document.getElementById("message").innerHTML = "Black's turn!";
+            }
+        }
+        function Foo(button) {
+            if(turn == 1){
+                turn = White(button);
+            } else{
+                turn = Black(button);
+            }
+            changeMessage(turn);
+        }
+
+    </script>
+    <div>
+        <button class="space" id="s1", onclick="Foo('s1')">#</button>
+        <button class="space" id="s2", onclick="Foo('s2')">#</button>
+        <button class="space" id="s3", onclick="Foo('s3')">#</button>
+        <br>
+        <button class="space" id="s4", onclick="Foo('s4')">#</button>
+        <button class="space" id="s5", onclick="Foo('s5')">#</button>
+        <button class="space" id="s6", onclick="Foo('s6')">#</button>
+        <br>
+        <button class="space" id="s7", onclick="Foo('s7')">#</button>
+        <button class="space" id="s8", onclick="Foo('s8')">#</button>
+        <button class="space" id="s9", onclick="Foo('s9')">#</button>
+        <br>
+        <div id="message">Black's turn!</div>
+        <a href="/">다시 시작</a>
+    </div>
+</body>
+</html>
